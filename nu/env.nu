@@ -1,4 +1,4 @@
-﻿# env.nu (managed in dotfiles)
+# env.nu (managed in dotfiles)
 
 # Point Starship to the version tracked in this repo
 $env.STARSHIP_CONFIG = $"($env.USERPROFILE)\\dotfiles\\starship\\starship.toml"
@@ -16,27 +16,12 @@ let extra_paths = [
 
 $env.PATH = (
   $env.PATH
-  | split row (char esep)
   | prepend $extra_paths
   | uniq
 )
 
-# Conda: add condabin to PATH if Miniconda/Anaconda exists in common locations
-let conda_candidates = [
-  $"($env.USERPROFILE)\\miniconda3\\condabin"
-  $"($env.USERPROFILE)\\anaconda3\\condabin"
-  "C:\\ProgramData\\miniconda3\\condabin"
-  "C:\\ProgramData\\anaconda3\\condabin"
-]
-
-for p in $conda_candidates {
-  if ($p | path exists) {
-    $env.PATH = (
-      $env.PATH
-      | split row (char esep)
-      | prepend [$p]
-      | uniq
-    )
-    break
-  }
-}
+# Module search paths — lets config.nu use modules by name (e.g. `use nu_conda.nu *`)
+$env.NU_LIB_DIRS = (
+  $env.NU_LIB_DIRS? | default []
+  | append ($env.USERPROFILE | path join "dotfiles" "conda")
+)

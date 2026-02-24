@@ -1,0 +1,4 @@
+# carapace bridges.yaml (managed in dotfiles)
+# Enable bridges to other shell completion systems.
+# See: https://carapace-sh.github.io/carapace-bin/bridges.html
+- name: conda

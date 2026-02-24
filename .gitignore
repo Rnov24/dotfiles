@@ -1,0 +1,30 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Distribution / packaging
+*.egg-info/
+dist/
+build/
+
+# Environment
+.env
+.venv
+env/
+
+# Editor directories and files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS files
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Generated files (bootstrap creates these at runtime, not tracked)
+carapace-completions.nu
