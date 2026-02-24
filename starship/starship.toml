@@ -1,0 +1,32 @@
+﻿# starship.toml (managed in dotfiles)
+
+add_newline = false
+command_timeout = 1000
+
+format = "$directory$git_branch$git_status$python$conda$character"
+
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+
+[git_branch]
+format = " [$branch]($style)"
+style = "bold"
+
+[git_status]
+format = " [$all_status$ahead_behind]($style)"
+style = "bold"
+
+[python]
+format = " [py:$version]($style)"
+style = "bold"
+detect_extensions = ["py"]
+detect_files = ["pyproject.toml", "requirements.txt", "environment.yml"]
+
+[conda]
+format = " [($environment)]($style)"
+style = "bold"
+
+[character]
+success_symbol = "➜"
+error_symbol = "✗"
